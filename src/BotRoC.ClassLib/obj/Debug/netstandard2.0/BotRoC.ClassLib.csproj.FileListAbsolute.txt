@@ -1,0 +1,9 @@
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\bin\Debug\netstandard2.0\BotRoC.ClassLib.deps.json
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\bin\Debug\netstandard2.0\BotRoC.ClassLib.dll
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\bin\Debug\netstandard2.0\BotRoC.ClassLib.pdb
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.csprojAssemblyReference.cache
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.csproj.CoreCompileInputs.cache
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.AssemblyInfoInputs.cache
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.AssemblyInfo.cs
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.dll
+D:\Jonathan\Projets\BotRoC\src\BotRoC.ClassLib\obj\Debug\netstandard2.0\BotRoC.ClassLib.pdb
