@@ -2750,7 +2750,7 @@
       ]
     },
     "System.Drawing.Common/4.5.0": {
-      "sha512": "uYixYbB0vzxSbc9B7jzwwUA8Upodaj3g2ZNnREWW6zoBw9DltzltcEa1g0I4u6ARqVJ0t4E3yJAWw5h2gvJlhQ==",
+      "sha512": "LLI+GGolsv4K8Eu2PN5N3/1t4pM5zoU4fM3lWhSOawJuCjv9iQJJODjd4/QJIgpjlqxzQDMMoOjAaVuzrNJT0g==",
       "type": "package",
       "path": "system.drawing.common/4.5.0",
       "files": [
@@ -5319,23 +5319,23 @@
     ]
   },
   "packageFolders": {
-    "d:\\Profiles\\jchirk\\.nuget\\packages\\": {},
+    "C:\\Users\\Jonathan\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Profiles\\jchirk\\OneDrive - Sopra Steria\\Jonathan\\Perso\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\BotRoC.ConsoleApp.csproj",
+      "projectUniqueName": "d:\\Jonathan\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\BotRoC.ConsoleApp.csproj",
       "projectName": "BotRoC.ConsoleApp",
-      "projectPath": "D:\\Profiles\\jchirk\\OneDrive - Sopra Steria\\Jonathan\\Perso\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\BotRoC.ConsoleApp.csproj",
-      "packagesPath": "d:\\Profiles\\jchirk\\.nuget\\packages\\",
-      "outputPath": "D:\\Profiles\\jchirk\\OneDrive - Sopra Steria\\Jonathan\\Perso\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\obj\\",
+      "projectPath": "d:\\Jonathan\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\BotRoC.ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\Jonathan\\.nuget\\packages\\",
+      "outputPath": "d:\\Jonathan\\Projets\\BotRoC\\src\\BotRoC.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "d:\\Profiles\\jchirk\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Jonathan\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

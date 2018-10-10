@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AE5DE776-ECA6-471D-9572-92246F2D4D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotRoC.ClassLib", "src\BotRoC.ClassLib\BotRoC.ClassLib.csproj", "{68631787-6EB3-438E-AEC6-AB4CD32D0395}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotRoC.ConsoleApp", "src\BotRoC.ConsoleApp\BotRoC.ConsoleApp.csproj", "{AFAA38D6-D201-497C-97F8-8CA04F6A1AFB}"
 EndProject
 Global
@@ -48,7 +46,6 @@ Global
 		{AFAA38D6-D201-497C-97F8-8CA04F6A1AFB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{68631787-6EB3-438E-AEC6-AB4CD32D0395} = {AE5DE776-ECA6-471D-9572-92246F2D4D26}
 		{AFAA38D6-D201-497C-97F8-8CA04F6A1AFB} = {AE5DE776-ECA6-471D-9572-92246F2D4D26}
 	EndGlobalSection
 EndGlobal

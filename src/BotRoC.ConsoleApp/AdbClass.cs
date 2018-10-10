@@ -7,6 +7,7 @@ namespace BotRoC.ConsoleApp
 {
     public class AdbClass
     {
+         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private AdbServer server;
         private AdbClient client;
         private DeviceData device;
@@ -17,40 +18,47 @@ namespace BotRoC.ConsoleApp
         {
             try
             {
+                log.Info("Tentative de connexion à l'émulateur");
                 server = new AdbServer();
-                var result = server.StartServer(@"C:\Android\adb.exe", restartServerIfNewer: false);
+                var result = server.StartServer(@"./resources/Android/adb.exe", restartServerIfNewer: false);
                 this.client = (AdbClient)AdbClient.Instance;            // AdbClient.Instance.CreateAdbForwardRequest("localhost", 21503);
                 device = AdbClient.Instance.GetDevices()[0];
                 if (device != null)
                 {
-                    Console.WriteLine(device);
+                    log.Info("Connecté à " + device);
                     return 0;
                 }
                 else
                 {
-                    Console.WriteLine("No device");
+                    log.Error("Connexion échouée");
                     return -1;
                 }
             }
             catch (Exception e)
             {
+                log.Error("Erreur lors de la connexion : " + e);
                 return -1;
             }
         }
 
-        public string GetScreenSize()
+        public Point GetScreenSize()
         {
             var receiver = new ConsoleOutputReceiver();
 
             client.ExecuteRemoteCommand("wm size", device, receiver);
-            return (receiver.ToString().Split(" ")[2]);
+            string[] strArr = receiver.ToString().Split(" ")[2].Split("x");
+            int[] intArr= Array.ConvertAll(strArr,Int32.Parse);
+            var endPoint = new Point(intArr[0], intArr[1]);
+            log.Info("La résolution est de : " + endPoint.X + "x" + endPoint.Y);
+            return (endPoint);
         }
 
-        public void TouchScreen(int x, int y)
+        public void TouchScreen(Point point)
         {
             var receiver = new ConsoleOutputReceiver();
 
-            client.ExecuteRemoteCommand("input tap " + x + " "+  y, device, receiver);
+            log.Info("Tap " + point.X + " " + point.Y);
+            client.ExecuteRemoteCommand("input tap " + point.X + " "+  point.Y, device, receiver);
         }
 
         public Bitmap GetScreenShot()
