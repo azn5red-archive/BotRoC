@@ -12,3 +12,14 @@ D:\Jonathan\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.
 D:\Jonathan\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ClassLib.dll
 D:\Jonathan\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ClassLib.pdb
 D:\Jonathan\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.csproj.CopyComplete
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ConsoleApp.deps.json
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ConsoleApp.runtimeconfig.json
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ConsoleApp.runtimeconfig.dev.json
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ConsoleApp.dll
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\bin\Debug\netcoreapp2.1\BotRoC.ConsoleApp.pdb
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.csprojAssemblyReference.cache
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.csproj.CoreCompileInputs.cache
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.AssemblyInfoInputs.cache
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.AssemblyInfo.cs
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.dll
+D:\Profiles\jchirk\OneDrive - Sopra Steria\Jonathan\Perso\Projets\BotRoC\src\BotRoC.ConsoleApp\obj\Debug\netcoreapp2.1\BotRoC.ConsoleApp.pdb
