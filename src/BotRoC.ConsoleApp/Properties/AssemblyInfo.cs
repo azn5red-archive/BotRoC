@@ -1,1 +1,1 @@
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/log4net.config")]
