@@ -14,16 +14,13 @@ namespace BotRoC.ConsoleApp
             {
                 adbClass.GetScreenSize();
                 Point point = new Point(50, 700);
-                adbClass.TouchScreen(point);
+                adbClass.TouchPoint(point);
 
             }
-            ImageUtil imageUtil = new ImageUtil();
-            ImageFinder imageFinder = new ImageFinder();
-            Bitmap needle = imageUtil.OpenImage("needle.jpg");
-            Bitmap haystack = imageUtil.OpenImage("haystack.jpg");
-            Console.WriteLine(imageFinder.searchBitmap(needle, haystack, 0.0));
-            // Console.WriteLine(newPoint.X);
-            // Console.WriteLine(newPoint.Y);
+            Bitmap needle = ImageUtil.OpenImage("Screen1.png");
+            Bitmap haystack = ImageUtil.OpenImage("screenshot.jpg");
+            Rectangle image = ImageUtil.SearchBitmap(needle, haystack, 0.0);
+            adbClass.TouchRectangle(image);
         }
     }
 }

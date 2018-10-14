@@ -45,17 +45,27 @@ namespace BotRoC.ConsoleApp
             return (endPoint);
         }
 
-        public void TouchScreen(Point point)
+        public void TouchPoint(Point point)
         {
             var receiver = new ConsoleOutputReceiver();
 
-            log.Info("Tap " + point.X + " " + point.Y);
+            log.Info("Tap (point)" + point.X + " " + point.Y);
             client.ExecuteRemoteCommand("input tap " + point.X + " " + point.Y, device, receiver);
+        }
+
+        public void TouchRectangle(Rectangle rectangle)
+        {
+            var receiver = new ConsoleOutputReceiver();
+
+            int xCenter = rectangle.X + (rectangle.Width / 2);
+            int yCenter = rectangle.Y + (rectangle.Height / 2);
+            log.Info("Tap (rectangle) " + xCenter + " " + yCenter);
+            client.ExecuteRemoteCommand("input tap " + xCenter + " " + yCenter, device, receiver);
         }
 
         public Bitmap GetScreenShot()
         {
-            // client.GetFrameBufferAsync(device, CancellationToken.None).Result.Save("screenshot.jpg", System.Drawing.Imaging.ImageFormat.Png);
+            client.GetFrameBufferAsync(device, CancellationToken.None).Result.Save("screenshot.jpg", System.Drawing.Imaging.ImageFormat.Png);
             return (Bitmap)client.GetFrameBufferAsync(device, CancellationToken.None).Result;
         }
     }
