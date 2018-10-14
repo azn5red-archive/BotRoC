@@ -11,33 +11,36 @@ namespace BotRoC.ConsoleApp
         private AdbServer server;
         private AdbClient client;
         private DeviceData device;
+        private Point screenSize;
         // private Framebuffer buffer;
-        public AdbClass() { }
+        public AdbClass()
+        {
+            this.StartAdbServer();
+            this.screenSize = this.GetAdbScreenSize();
+        }
 
-        public int StartServer()
+        private void StartAdbServer()
         {
             try
             {
                 log.Info("Tentative de connexion à l'émulateur");
                 server = new AdbServer();
-                var result = server.StartServer(@"./resources/Android/adb.exe", restartServerIfNewer: false);
-                this.client = (AdbClient)AdbClient.Instance;            // AdbClient.Instance.CreateAdbForwardRequest("localhost", 21503);
+                server.StartServer(@"./resources/Android/adb.exe", restartServerIfNewer: false);
+                client = (AdbClient)AdbClient.Instance;            // AdbClient.Instance.CreateAdbForwardRequest("localhost", 21503);
                 device = AdbClient.Instance.GetDevices()[0];
                 log.Info("Connecté à " + device);
-                return 0;
             }
             catch (Exception e)
             {
-                log.Error("Erreur lors de la connexion : " + e);
-                return -1;
+                log.Error("Erreur lors de la connexion : " + e.Data);
             }
         }
 
-        public Point GetScreenSize()
+        private Point GetAdbScreenSize()
         {
             var receiver = new ConsoleOutputReceiver();
 
-            client.ExecuteRemoteCommand("wm size", device, receiver);
+            this.client.ExecuteRemoteCommand("wm size", device, receiver);
             string[] strArr = receiver.ToString().Split(" ")[2].Split("x");
             int[] intArr = Array.ConvertAll(strArr, Int32.Parse);
             var endPoint = new Point(intArr[0], intArr[1]);
@@ -49,7 +52,7 @@ namespace BotRoC.ConsoleApp
         {
             var receiver = new ConsoleOutputReceiver();
 
-            log.Info("Tap (point)" + point.X + " " + point.Y);
+            log.Debug("Tap (point)" + point.X + " " + point.Y);
             client.ExecuteRemoteCommand("input tap " + point.X + " " + point.Y, device, receiver);
         }
 
@@ -59,14 +62,23 @@ namespace BotRoC.ConsoleApp
 
             int xCenter = rectangle.X + (rectangle.Width / 2);
             int yCenter = rectangle.Y + (rectangle.Height / 2);
-            log.Info("Tap (rectangle) " + xCenter + " " + yCenter);
+            log.Debug("Tap (rectangle) " + xCenter + " " + yCenter);
             client.ExecuteRemoteCommand("input tap " + xCenter + " " + yCenter, device, receiver);
         }
 
-        public Bitmap GetScreenShot()
+        public Bitmap GetAdbScreen()
         {
-            client.GetFrameBufferAsync(device, CancellationToken.None).Result.Save("screenshot.jpg", System.Drawing.Imaging.ImageFormat.Png);
             return (Bitmap)client.GetFrameBufferAsync(device, CancellationToken.None).Result;
+        }
+
+        public void TakeScreenShot(string path)
+        {
+            client.GetFrameBufferAsync(device, CancellationToken.None).Result.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+        public Point GetScreenSize()
+        {
+            return this.screenSize;
         }
     }
 }

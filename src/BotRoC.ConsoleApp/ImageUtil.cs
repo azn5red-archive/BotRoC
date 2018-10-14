@@ -13,7 +13,7 @@ namespace BotRoC.ConsoleApp
             return new Bitmap(path);
         }
 
-         public static Rectangle SearchBitmap(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
+        public static Rectangle SearchBitmap(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
         {
             BitmapData smallData =
               smallBmp.LockBits(new Rectangle(0, 0, smallBmp.Width, smallBmp.Height),
