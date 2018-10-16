@@ -2,6 +2,7 @@
   <ItemGroup>
     <PackageReference Include="SharpAdbClient" Version="2.2.16"/>
     <PackageReference Include="log4net" Version="2.0.8"/>
+    <PackageReference Include="Tesseract" Version="3.0.1"/>
   </ItemGroup>
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

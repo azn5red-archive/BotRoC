@@ -8,11 +8,13 @@ namespace BotRoC.ConsoleApp
     public static class ImageUtil
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static Bitmap OpenImage(string path)
         {
             return new Bitmap(path);
         }
 
+        // Thanks to ManoDestra from stackoverflow (https://stackoverflow.com/questions/38336634/cant-compare-screenshot-with-images)
         public static Rectangle SearchBitmap(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
         {
             BitmapData smallData =

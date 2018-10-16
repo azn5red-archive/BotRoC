@@ -12,7 +12,7 @@ namespace BotRoC.ConsoleApp
         private AdbClient client;
         private DeviceData device;
         private Point screenSize;
-        // private Framebuffer buffer;
+        
         public AdbClass()
         {
             this.StartAdbServer();
@@ -23,16 +23,16 @@ namespace BotRoC.ConsoleApp
         {
             try
             {
-                log.Info("Tentative de connexion à l'émulateur");
+                log.Info("Trying to connect to emulator");
                 server = new AdbServer();
                 server.StartServer(@"./resources/Android/adb.exe", restartServerIfNewer: false);
                 client = (AdbClient)AdbClient.Instance;            // AdbClient.Instance.CreateAdbForwardRequest("localhost", 21503);
                 device = AdbClient.Instance.GetDevices()[0];
-                log.Info("Connecté à " + device);
+                log.Info("Connected to : " + device);
             }
             catch (Exception e)
             {
-                log.Error("Erreur lors de la connexion : " + e.Data);
+                log.Error("Connexion error : " + e.Data);
             }
         }
 
@@ -44,7 +44,7 @@ namespace BotRoC.ConsoleApp
             string[] strArr = receiver.ToString().Split(" ")[2].Split("x");
             int[] intArr = Array.ConvertAll(strArr, Int32.Parse);
             var endPoint = new Point(intArr[0], intArr[1]);
-            log.Info("La résolution est de : " + endPoint.X + "x" + endPoint.Y);
+            log.Info("Resolution : " + endPoint.X + "x" + endPoint.Y);
             return (endPoint);
         }
 

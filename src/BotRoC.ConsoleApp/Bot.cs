@@ -1,12 +1,14 @@
 using System;
 using System.Threading;
 using System.Drawing;
+using Tesseract;
 
 namespace BotRoC.ConsoleApp
 {
     public class Bot
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static string InstallationPath { get; set; }
 
         private AdbClass adbClass;
         private String resolutionPath;
@@ -14,16 +16,22 @@ namespace BotRoC.ConsoleApp
 
         public Bot()
         {
-            log.Info("Démarrage du bot...");
+            log.Info("Bot starting...");
             this.adbClass = new AdbClass();
 
             Point resolution = this.adbClass.GetScreenSize();
-            this.resolutionPath = "resources/Resolutions/" + resolution.X + 'x' + resolution.Y + '/';
-            log.Info("Le dossier de ressource utilisé est : " + this.resolutionPath);
+            this.resolutionPath = "resources/Game/resolutions/" + resolution.X + 'x' + resolution.Y + '/';
+            log.Info("Resource folder used : " + this.resolutionPath);
         }
+
+        public AdbClass GetAdbClass()
+        {
+            return this.adbClass;
+        }
+
         public void StartGame()
         {
-            log.Info("Lancement du jeu...");
+            log.Info("Game launched...");
             this.TouchImage("App.jpg");
             while (1 == 1)
             {
@@ -33,17 +41,27 @@ namespace BotRoC.ConsoleApp
                     Rectangle home1 = FindImage("Home1.jpg");
                     break;
                 }
-                catch (Exception ImageNotFound)
+                catch (ImageNotFound)
                 {
-                    log.Info("Lancement en cours...");
+                    log.Info("Game starting...");
                 }
             }
-            log.Info("Jeu lancé !");
+            log.Info("Game started!");
+        }
+
+        public void ReadScreen()
+        {
+            // log.Info("OCR read screen");
+            // var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+            // log.Info(engine);
+            // var pix = new BitmapToPixConverter().Convert(adbClass.GetAdbScreen());
+            // var page = engine.Process(pix, PageSegMode.SingleLine);
+            // log.Info("OCR : " + page.GetText());
         }
 
         private Rectangle FindImage(string path)
         {
-            log.Debug("Recherche sur l'écran de l'image : " + this.resolutionPath + path);
+            log.Debug("Trying to find image on screen  : " + this.resolutionPath + path);
             Bitmap needle = ImageUtil.OpenImage(this.resolutionPath + path);
             Bitmap screen = adbClass.GetAdbScreen();
             Rectangle image = ImageUtil.SearchBitmap(needle, screen, 0.0);
@@ -52,24 +70,22 @@ namespace BotRoC.ConsoleApp
             else
                 throw new ImageNotFound();
         }
+
         private void TouchImage(string path)
         {
             Rectangle image = this.FindImage(path);
             adbClass.TouchRectangle(image);
         }
 
-        public AdbClass GetAdbClass()
-        {
-            return this.adbClass;
-        }
     }
+
 
     class ImageNotFound : Exception
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ImageNotFound()
         {
-            log.Debug("Image non retrouvée");
+            log.Debug("Image not found");
         }
     }
 }
