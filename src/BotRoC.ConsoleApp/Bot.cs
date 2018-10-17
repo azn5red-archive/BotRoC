@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Drawing;
 using Tesseract;
@@ -12,7 +13,7 @@ namespace BotRoC.ConsoleApp
 
         private AdbClass adbClass;
         private String resolutionPath;
-        private Point ScoutBase;
+        // private Point ScoutBase;
 
         public Bot()
         {
@@ -51,12 +52,18 @@ namespace BotRoC.ConsoleApp
 
         public void ReadScreen()
         {
-            // log.Info("OCR read screen");
-            // var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
-            // log.Info(engine);
-            // var pix = new BitmapToPixConverter().Convert(adbClass.GetAdbScreen());
-            // var page = engine.Process(pix, PageSegMode.SingleLine);
-            // log.Info("OCR : " + page.GetText());
+            try
+            {
+                log.Info("OCR read screen");
+                var engine = new TesseractEngine(@"~/tessdata", "eng", EngineMode.Default);
+                log.Info(engine);
+                // var pix = new BitmapToPixConverter().Convte.SingleLine);
+                // log.Info("OCR : " + page.GetText());
+            }
+            catch (Exception e)
+            {
+                log.Debug(e);
+            }
         }
 
         private Rectangle FindImage(string path)
