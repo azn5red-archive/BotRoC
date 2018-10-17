@@ -9,7 +9,6 @@ namespace BotRoC.ConsoleApp
     public class Bot
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public static string InstallationPath { get; set; }
 
         private AdbClass adbClass;
         private String resolutionPath;
@@ -55,10 +54,14 @@ namespace BotRoC.ConsoleApp
             try
             {
                 log.Info("OCR read screen");
-                var engine = new TesseractEngine(@"~/tessdata", "eng", EngineMode.Default);
+                var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
                 log.Info(engine);
-                // var pix = new BitmapToPixConverter().Convte.SingleLine);
-                // log.Info("OCR : " + page.GetText());
+                //var img = Pix.LoadFromFile(@"./test.png");
+                var conv = new BitmapToPixConverter();
+                var img = conv.Convert(adbClass.GetAdbScreen());
+                var page = engine.Process(img);
+                log.Info("OCR : " + page.GetText());
+                Console.WriteLine(page.GetText());
             }
             catch (Exception e)
             {

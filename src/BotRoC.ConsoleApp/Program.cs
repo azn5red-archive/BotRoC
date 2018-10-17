@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using log4net;
 
 namespace BotRoC.ConsoleApp
@@ -12,6 +11,7 @@ namespace BotRoC.ConsoleApp
         {
             try
             {
+                log.Debug("test");
                 Bot bot = new Bot();
                 // bot.StartGame();
                 bot.ReadScreen();

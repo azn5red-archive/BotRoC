@@ -41,7 +41,7 @@ namespace BotRoC.ConsoleApp
             var receiver = new ConsoleOutputReceiver();
 
             this.client.ExecuteRemoteCommand("wm size", device, receiver);
-            string[] strArr = receiver.ToString().Split(" ")[2].Split("x");
+            string[] strArr = receiver.ToString().Split(' ')[2].Split('x');
             int[] intArr = Array.ConvertAll(strArr, Int32.Parse);
             var endPoint = new Point(intArr[0], intArr[1]);
             log.Info("Resolution : " + endPoint.X + "x" + endPoint.Y);
