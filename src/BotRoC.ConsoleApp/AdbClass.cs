@@ -23,7 +23,7 @@ namespace BotRoC.ConsoleApp
         {
             try
             {
-                log.Info("Trying to connect to emulator");
+                log.Debug("Trying to connect to emulator");
                 server = new AdbServer();
                 server.StartServer(@"./resources/Android/adb.exe", restartServerIfNewer: false);
                 client = (AdbClient)AdbClient.Instance;            // AdbClient.Instance.CreateAdbForwardRequest("localhost", 21503);
@@ -32,6 +32,7 @@ namespace BotRoC.ConsoleApp
             }
             catch (Exception e)
             {
+                client.KillAdb();
                 log.Error("Connexion error : " + e.Data);
             }
         }

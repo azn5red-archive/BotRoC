@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Drawing;
+using System.IO;
 using Tesseract;
 
 namespace BotRoC.ConsoleApp
@@ -12,7 +13,6 @@ namespace BotRoC.ConsoleApp
 
         private AdbClass adbClass;
         private String resolutionPath;
-        // private Point ScoutBase;
 
         public Bot()
         {
@@ -21,7 +21,16 @@ namespace BotRoC.ConsoleApp
 
             Point resolution = this.adbClass.GetScreenSize();
             this.resolutionPath = "resources/Game/resolutions/" + resolution.X + 'x' + resolution.Y + '/';
-            log.Info("Resource folder used : " + this.resolutionPath);
+            if (!Directory.Exists(this.resolutionPath))
+            {
+                log.Error("Resource folder not found");
+                throw new FileNotFoundException();
+            }
+            else
+            {
+                log.Debug("Resource folder used : " + this.resolutionPath);
+            }
+
         }
 
         public AdbClass GetAdbClass()
@@ -54,14 +63,12 @@ namespace BotRoC.ConsoleApp
             try
             {
                 log.Info("OCR read screen");
-                var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
-                log.Info(engine);
-                //var img = Pix.LoadFromFile(@"./test.png");
+                TesseractEnviornment.CustomSearchPath = "resources/Tesseract";
+                var engine = new TesseractEngine(@"./resources/Tesseract/tessdata", "fra", EngineMode.Default);     //var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
                 var conv = new BitmapToPixConverter();
-                var img = conv.Convert(adbClass.GetAdbScreen());
+                var img = conv.Convert(ImageUtil.RemoveNoise(adbClass.GetAdbScreen()));
                 var page = engine.Process(img);
                 log.Info("OCR : " + page.GetText());
-                Console.WriteLine(page.GetText());
             }
             catch (Exception e)
             {

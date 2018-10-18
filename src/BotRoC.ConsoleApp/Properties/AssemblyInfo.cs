@@ -6,4 +6,4 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/log4net.config")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "config/log4net.config", Watch = true)]
