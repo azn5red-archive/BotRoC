@@ -67,6 +67,16 @@ namespace BotRoC.ConsoleApp
             client.ExecuteRemoteCommand("input tap " + xCenter + " " + yCenter, device, receiver);
         }
 
+        public void TouchRectangle(Rectangle rectangle, int x, int y)
+        {
+            var receiver = new ConsoleOutputReceiver();
+
+            int xCenter = rectangle.X + (rectangle.Width / 2) + x;
+            int yCenter = rectangle.Y + (rectangle.Height / 2) + y;
+            log.Debug("Tap (rectangle) " + xCenter + " " + yCenter);
+            client.ExecuteRemoteCommand("input tap " + xCenter + " " + yCenter, device, receiver);
+        }
+
         public Bitmap GetAdbScreen()
         {
             return (Bitmap)client.GetFrameBufferAsync(device, CancellationToken.None).Result;

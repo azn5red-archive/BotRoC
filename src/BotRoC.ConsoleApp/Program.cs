@@ -11,10 +11,17 @@ namespace BotRoC.ConsoleApp
         {
             try
             {
-                log.Debug("test");
                 Bot bot = new Bot();
-                // bot.StartGame();
-                bot.ReadScreen();
+                bot.GetAdbClass().TakeScreenShot("test.jpg");
+
+                bot.StartGame();
+                //bot.ReadScreen();
+                while (1 == 1)
+                {
+                    bot.CollectResources();
+                    bot.Explore();
+                }
+                
             }
             catch
             {
