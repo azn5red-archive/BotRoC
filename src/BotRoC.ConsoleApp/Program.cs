@@ -20,6 +20,7 @@ namespace BotRoC.ConsoleApp
                 {
                     bot.CollectResources();
                     bot.Explore();
+                    bot.CollectTribalVillage();
                 }
                 
             }

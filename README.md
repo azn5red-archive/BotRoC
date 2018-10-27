@@ -6,6 +6,7 @@ It has been abandonned. Feel free to contribute or fork.
 What it can actually do :
 * Collect resources
 * Explore
+* Collect gifts from tribal villages
 
 ## Getting Started
 

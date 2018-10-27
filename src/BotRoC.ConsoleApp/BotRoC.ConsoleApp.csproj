@@ -43,6 +43,21 @@
     <None Update="resources\Game\resolutions\1920x1200\AskHelp.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resources\Game\resolutions\1920x1200\EventQuest.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\Game\resolutions\1920x1200\ExplorationReport.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\Game\resolutions\1920x1200\ExplorationReportNotSelected.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\Game\resolutions\1920x1200\ExplorationReportSelected.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\Game\resolutions\1920x1200\ExplorationTribalVillage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resources\Game\resolutions\1920x1200\Explore.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

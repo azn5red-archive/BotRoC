@@ -12,6 +12,7 @@ namespace BotRoC.ConsoleApp
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private AdbClass adbClass;
+        private Point resolution;
         private String resolutionPath;
 
         public Bot()
@@ -19,7 +20,7 @@ namespace BotRoC.ConsoleApp
             log.Info("Bot starting...");
             this.adbClass = new AdbClass();
 
-            Point resolution = this.adbClass.GetScreenSize();
+            this.resolution = this.adbClass.GetScreenSize();
             this.resolutionPath = "resources/Game/resolutions/" + resolution.X + 'x' + resolution.Y + '/';
             if (!Directory.Exists(this.resolutionPath))
             {
@@ -58,7 +59,7 @@ namespace BotRoC.ConsoleApp
                     throw new TimeoutException();
                 try
                 {
-                    Rectangle ListMenu = FindImage("ListMenu.jpg", 0.4);
+                    Rectangle EventQuest = FindImage("EventQuest.jpg", 0.4);
                     break;
                 }
                 catch (ImageNotFound)
@@ -68,6 +69,7 @@ namespace BotRoC.ConsoleApp
                 }
             }
             log.Info("Game started!");
+            //this.GoToTown();
         }
 
         public void ReadScreen()
@@ -122,28 +124,40 @@ namespace BotRoC.ConsoleApp
             {
                 try
                 {
+                    log.Info("Trying to explore...");
                     this.TouchImage("ExploreNotif.jpg", 0.5, 0, 200);
                 }
                 catch
                 {
+                    log.Info("No exploration to do");
                     return;
                 }
-                Thread.Sleep(2000);
-                this.TouchImage("ExploreMenu.jpg", 0.3);
-                Thread.Sleep(2000);
-                this.TouchImage("ExploreButton.jpg", 0.2);
-                Thread.Sleep(2000);
-                this.TouchImage("ExploreButton.jpg", 0.2);
-                Thread.Sleep(2000);
-                this.TouchImage("SendButton.jpg", 0.2);
-                Thread.Sleep(2000);
-                this.GoToTown();
-                Thread.Sleep(2000);
+                try
+                {
+                    log.Info("Starting new exploration");
+                    Thread.Sleep(3000);
+                    this.TouchImage("ExploreMenu.jpg", 0.3);
+                    Thread.Sleep(3000);
+                    this.TouchImage("ExploreButton.jpg", 0.2);
+                    Thread.Sleep(3000);
+                    this.TouchImage("ExploreButton.jpg", 0.2);
+                    Thread.Sleep(3000);
+                    this.TouchImage("SendButton.jpg", 0.2);
+                    Thread.Sleep(3000);
+                    this.GoToTown();
+                    Thread.Sleep(3000);
+                }
+                catch
+                {
+                    log.Info("Error during exploration");
+                    this.GoToTown();
+                }
             }
         }
 
         public void GoToTown()
         {
+            int numError = 0;
             try
             {
                 log.Info("Going back to town");
@@ -154,13 +168,65 @@ namespace BotRoC.ConsoleApp
             {
                 try
                 {
-                    this.TouchImage("Home.jpg", 0.4);
+                    //this.TouchImage("Home.jpg", 0.4);
+                    adbClass.TouchPoint(new Point(90, 1100));
                 }
                 catch
                 {
                     log.Error("I'm lost");
+                    if (numError++ < 5)
+                        this.GoToTown();
+                    else
+                        throw new ImageNotFound();
                 }
             }
+        }
+
+        public void CollectTribalVillage()
+        {
+            try
+            {
+                while (1 == 1)
+                {
+                    log.Info("Trying to collect gift from tribal villages...");
+                    this.GoToMessages();
+                    Thread.Sleep(2000);
+                    this.FindImage("ExplorationReportSelected.jpg", 0.4);
+                    Thread.Sleep(2000);
+                    this.TouchImage("ExplorationTribalVillage.jpg", 0.3, 90, 0);
+                    Thread.Sleep(5000);
+                    adbClass.TouchPoint(new Point(this.resolution.X / 2, this.resolution.Y / 2));
+                    Thread.Sleep(2000);
+                    this.GoToTown();
+                    Thread.Sleep(2000);
+                }
+            }
+            catch
+            {
+                try
+                {
+                    Thread.Sleep(2000);
+                    this.TouchImage("ExplorationReportNotSelected.jpg", 0.3);
+                    Thread.Sleep(2000);
+                    this.TouchImage("ExplorationTribalVillage.jpg", 0.3, 90, 0);
+                    Thread.Sleep(5000);
+                    adbClass.TouchPoint(new Point(this.resolution.X / 2, this.resolution.Y / 2));
+                    Thread.Sleep(2000);
+                    this.GoToTown();
+                    Thread.Sleep(2000);
+                }
+                catch
+                {
+                    log.Info("Nothing to collect");
+                    adbClass.TouchPoint(new Point(1850, 75));
+                    return;
+                }
+            }
+        }
+
+        public void GoToMessages()
+        {
+            adbClass.TouchPoint(new Point(1800, 950));
         }
 
         private Rectangle FindImage(string path, Double tolerance)
