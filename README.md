@@ -1,8 +1,11 @@
 # Bot RoC
 
-This project aims to automate tasks for the android game Rise of Civilization (RoC).
-It's basically a bot that can connect to the Memu android emulator find and tap on images.
-It has been abandonned. Feel free to contribute or fork.
+This project aims to automate tasks for the android game Rise of Civilization (RoC).  
+Warning : Lilith games has an anti-bot policy. I'm not responsible if you get caught and banned from the game.  
+Although this bot should not be detected, as it uses only standard inputs from adb (unless the new anti-bot system uses captcha).  
+
+It's basically a program that can connect to the Memu android emulator find and tap on images.  
+It has been abandonned. Feel free to contribute or fork.  
 What it can actually do :
 * Collect resources
 * Explore
